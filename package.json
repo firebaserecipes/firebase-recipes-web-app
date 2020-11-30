@@ -11,6 +11,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.0",
+    "uuid": "8.3.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -18,7 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "buildDeploy": "yarn build && firebase deploy --only hosting"
+    "buildDeploy": "yarn build && firebase deploy --only hosting",
+    "setCors": "gsutil cors set cors.json gs://fir-recipes-15644.appspot.com"
   },
   "eslintConfig": {
     "extends": [
