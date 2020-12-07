@@ -1,7 +1,0 @@
-[
-  {
-    "origin": ["localhost", "https://www.firebaserecipes.com"],
-    "method": ["GET", "POST", "DELETE"],
-    "maxAgeSeconds": 3600
-  }
-]
