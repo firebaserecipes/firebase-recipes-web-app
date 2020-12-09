@@ -36,7 +36,7 @@ const validateRecipePostPut = (newRecipe) => {
     missingFields += "directions";
   }
 
-  if (!newRecipe.isPublished !== true && newRecipe.isPublished !== false) {
+  if (newRecipe.isPublished !== true && newRecipe.isPublished !== false) {
     missingFields += "isPublished";
   }
 
