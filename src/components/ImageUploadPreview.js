@@ -1,7 +1,7 @@
-import { useState, useRef, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { useState, useRef, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-import FirebaseStorageService from "../FirebaseStorageService";
+import FirebaseStorageService from '../FirebaseStorageService';
 
 function ImageUploadPreview({
   basePath,
@@ -10,7 +10,7 @@ function ImageUploadPreview({
   handleUploadCancel,
 }) {
   const [uploadProgress, setUploadProgrses] = useState(-1);
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState('');
 
   const fileInputRef = useRef();
 
@@ -19,7 +19,7 @@ function ImageUploadPreview({
       setImageUrl(existingImageUrl);
     } else {
       setUploadProgrses(-1);
-      setImageUrl("");
+      setImageUrl('');
       fileInputRef.current.value = null;
     }
   }, [existingImageUrl]);
@@ -29,7 +29,7 @@ function ImageUploadPreview({
     const file = files[0];
 
     if (!file) {
-      alert("File Select Failed. Please try again.");
+      alert('File Select Failed. Please try again.');
       return;
     }
 
@@ -55,11 +55,10 @@ function ImageUploadPreview({
   function handleCancelImageClick() {
     FirebaseStorageService.deleteFile(imageUrl);
     fileInputRef.current.value = null;
-    setImageUrl("");
+    setImageUrl('');
     setUploadProgrses(-1);
     handleUploadCancel();
   }
-
   return (
     <div className="image-upload-preview-container">
       <input

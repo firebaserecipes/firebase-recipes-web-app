@@ -51,7 +51,7 @@ function AddEditRecipeForm({
       name,
       category,
       directions,
-      publishDate: new Date(publishDate),
+      publishDate: new Date(publishDate).getTime() / 1000,
       isPublished,
       ingredients,
       imageUrl,
