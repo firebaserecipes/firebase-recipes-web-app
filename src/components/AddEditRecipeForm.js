@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import ImageUploadPreview from "./ImageUploadPreview";
+import ImageUploadPreview from './ImageUploadPreview';
 
 function AddEditRecipeForm({
   existingRecipe,
@@ -14,7 +14,7 @@ function AddEditRecipeForm({
       setName(existingRecipe.name);
       setCategory(existingRecipe.category);
       setDirections(existingRecipe.directions);
-      setPublishDate(existingRecipe.publishDate.toISOString().split("T")[0]);
+      setPublishDate(existingRecipe.publishDate.toISOString().split('T')[0]);
       setIngredients(existingRecipe.ingredients);
       setImageUrl(existingRecipe.imageUrl);
     } else {
@@ -22,26 +22,26 @@ function AddEditRecipeForm({
     }
   }, [existingRecipe]);
 
-  const [name, setName] = useState("");
-  const [category, setCategory] = useState("");
+  const [name, setName] = useState('');
+  const [category, setCategory] = useState('');
   const [publishDate, setPublishDate] = useState(
-    new Date().toISOString().split("T")[0]
+    new Date().toISOString().split('T')[0]
   );
-  const [directions, setDirections] = useState("");
+  const [directions, setDirections] = useState('');
   const [ingredients, setIngredients] = useState([]);
-  const [ingredientName, setIngredientName] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [ingredientName, setIngredientName] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
 
   function handleRecipeFormSubmit(e) {
     e.preventDefault();
 
     if (ingredients.length === 0) {
-      alert("Ingredients cannot be empty. Please add at least 1 ingredient");
+      alert('Ingredients cannot be empty. Please add at least 1 ingredient');
       return;
     }
 
     if (!imageUrl) {
-      alert("Missing recipe image. Please add a recipe image.");
+      alert('Missing recipe image. Please add a recipe image.');
       return;
     }
 
@@ -51,7 +51,8 @@ function AddEditRecipeForm({
       name,
       category,
       directions,
-      publishDate: new Date(publishDate).getTime() / 1000,
+      // publishDate: new Date(publishDate).getTime() / 1000,
+      publishDate: new Date(publishDate),
       isPublished,
       ingredients,
       imageUrl,
@@ -67,19 +68,19 @@ function AddEditRecipeForm({
   }
 
   function handleAddIngredient(e) {
-    if (e.key && e.key !== "Enter") {
+    if (e.key && e.key !== 'Enter') {
       return;
     }
 
     e.preventDefault();
 
     if (!ingredientName) {
-      alert("Missing ingredient field. Please double check.");
+      alert('Missing ingredient field. Please double check.');
       return;
     }
 
     setIngredients([...ingredients, ingredientName]);
-    setIngredientName("");
+    setIngredientName('');
   }
 
   function handleDeleteIngredient(ingredientName) {
@@ -91,12 +92,12 @@ function AddEditRecipeForm({
   }
 
   function resetForm() {
-    setName("");
-    setCategory("");
-    setDirections("");
-    setPublishDate("");
+    setName('');
+    setCategory('');
+    setDirections('');
+    setPublishDate('');
     setIngredients([]);
-    setImageUrl("");
+    setImageUrl('');
   }
 
   return (
@@ -112,7 +113,7 @@ function AddEditRecipeForm({
             basePath="recipes"
             existingImageUrl={imageUrl}
             handleUploadFinish={(downloadUrl) => setImageUrl(downloadUrl)}
-            handleUploadCancel={() => setImageUrl("")}
+            handleUploadCancel={() => setImageUrl('')}
           ></ImageUploadPreview>
         </div>
         <div className="fields">
@@ -225,7 +226,7 @@ function AddEditRecipeForm({
       </div>
       <div className="action-buttons">
         <button type="submit" className="primary-button action-button">
-          {existingRecipe ? "Update Recipe" : "Create Recipe"}
+          {existingRecipe ? 'Update Recipe' : 'Create Recipe'}
         </button>
         {existingRecipe ? (
           <>
